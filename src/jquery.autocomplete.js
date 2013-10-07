@@ -69,6 +69,7 @@
                 onSearchStart: noop,
                 onSearchComplete: noop,
                 onSearchError: noop,
+                onLookupStart: noop,
                 containerClass: 'autocomplete-suggestions',
                 tabDisabled: false,
                 dataType: 'text',
@@ -404,6 +405,8 @@
             var that = this,
                 queryLowerCase = query.toLowerCase(),
                 filter = that.options.lookupFilter;
+
+            that.options.onLookupStart(query);
 
             return {
                 suggestions: $.grep(that.options.lookup, function (suggestion) {
